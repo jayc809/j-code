@@ -89,7 +89,7 @@ class GUI:
 
     def mount_decode_controls(self):
         upload_code_button = tk.Button(
-            self.widgets_frame, text="Upload Code", command=self.upload_file)
+            self.widgets_frame, text="Upload", command=self.upload_file)
         upload_code_button.pack(side=tk.LEFT, padx=5)
         self.upload_code_button = upload_code_button
 
@@ -214,6 +214,10 @@ class GUI:
         if len(message_str.get()) > MAX_MESSAGE_SIZE:
             new_message = message_str.get()[:MAX_MESSAGE_SIZE]
             message_str.set(new_message)
+            self.set_display_label("Max message length reached")
+        else:
+            self.set_display_label(
+                "Enter your message below to generate a J-CODE")
 
     def run(self):
         self.root.mainloop()
